@@ -1,0 +1,33 @@
+---
+import Foother from "@/components/Foother.astro";
+import Header from "@/components/Header.astro";
+import ClientRouter from "astro/components/ClientRouter.astro";
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Astro Basics</title>
+		<ClientRouter />
+		<link
+			rel="stylesheet"
+			type="text/css"
+			href="../../public/css/global.css"
+		/>
+	</head>
+	<body class="w-full bg-gray-200 dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-10 lg:px-60">
+		<!-- From Uiverse.io by adamgiebl -->
+
+		<Header />
+		<main>
+			<slot />
+		</main>
+		<Foother />
+	</body>
+</html>
+
+<style></style>

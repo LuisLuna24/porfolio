@@ -1,0 +1,66 @@
+---
+import MenuIcon from "@/icons/MenuIcon.astro";
+
+const navLinks = [
+    { title: "Inicio", link: "/" },
+    { title: "Sobre mí", link: "/sobre_mi" },
+    { title: "Proyectos", link: "/proyectos" },
+    { title: "Experiencia", link: "/experiencia" },
+    { title: "Contacto", link: "/contacto" },
+    { title: "Servicios", link: "/servicios" },
+];
+---
+
+<header class="fixed top-0 left-0 w-full bg-slate-300 dark:bg-slate-800 text-gray-900 dark:text-gray-100 flex justify-between px-10 lg:px-60 py-5">
+    <div class="flex justify-between max-lg:w-full">
+        <h1>Luna</h1>
+        <button type="button" class="lg:hidden" id="toggleButton" aria-label="Abrir menú"><MenuIcon /></button>
+    </div>
+
+    <nav id="nav" class="w-72 lg:w-auto bg-slate-300 dark:bg-slate-800 max-lg:fixed max-lg:top-0 max-lg:left-0 max-lg:h-screen transition-transform duration-300 max-lg:overflow-hidden max-lg:-translate-x-full px-10 pt-10 lg:px-0 lg:pt-0 z-50">
+        <ul class="flex flex-col lg:flex-row gap-5">
+            {navLinks.map((navLink) => (
+                <li>
+                    <a
+                        class:list={{
+                            "opacity-80": !(Astro.url.pathname === navLink.link || Astro.url.pathname.startsWith(navLink.link + "/")),
+                            "opacity-100 text-amber-400 font-bold": Astro.url.pathname === navLink.link || Astro.url.pathname.startsWith(navLink.link + "/"),
+                            "hover:opacity-100 hover:scale-110 transition": true,
+                        }}
+                        href={navLink.link}
+                    >
+                        {navLink.title}
+                    </a>
+                </li>
+            ))}
+        </ul>
+    </nav>
+    <div id="box_shadow" class="z-10 fixed left-0 right-0 top-0 bottom-0 bg-black/50 hidden lg:hidden"></div>
+</header>
+
+<script>
+    document.addEventListener("astro:page-load", () => {
+        const nav = document.getElementById("nav");
+        const button = document.getElementById("toggleButton");
+        const boxShadow = document.getElementById("box_shadow");
+
+        const openMenu = () => {
+            nav.classList.remove("max-lg:-translate-x-full");
+            boxShadow.classList.remove("hidden");
+        };
+
+        const closeMenu = () => {
+            nav.classList.add("max-lg:-translate-x-full");
+            boxShadow.classList.add("hidden");
+        };
+
+        const toggleMenu = () => nav.classList.contains("max-lg:-translate-x-full") ? openMenu() : closeMenu();
+
+        button.addEventListener("click", toggleMenu);
+        boxShadow.addEventListener("click", closeMenu);
+
+        window.addEventListener("resize", () => {
+            if (window.innerWidth >= 1024) closeMenu();
+        });
+    });
+</script>

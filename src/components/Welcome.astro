@@ -1,0 +1,59 @@
+---
+import Timelime from "./Timelime.astro";
+---
+
+<div class="h-screen grid grid-cols-5 grid-rows-5 gap-4 py-24">
+	<div
+		class="flex flex-col gap-3 col-span-2 row-span-3 bg-slate-800 rounded-xl p-5 transition hover:scale-104"
+	>
+		<div>
+			<span class="font-semibold text-3xl">Hola soy</span>
+			<h1 class="text-amber-600 text-5xl font-bold">Luis Luna</h1>
+			<h2 class="text-2xl">
+				Desarollador <span>Web Full Stack</span>
+			</h2>
+		</div>
+		<p class="text-xl">
+			Soy ingeniero en <span class="text-amber-600/90"
+				>sistemas computacionales</span
+			> y me especializo en crear aplicaciones hechas a medida para empresas,
+			así como también herramientas útiles para todo el público.
+		</p>
+	</div>
+	<div
+		class="row-span-2 col-start-3 bg-slate-800 rounded-xl overflow-hidden transition hover:scale-104"
+	>
+		<img src="luna.webp" alt="Foto de Luis Luna" class="h-full" />
+	</div>
+	<div
+		class="col-start-3 row-start-3 bg-slate-800 rounded-xl overflow-hidden transition hover:scale-104"
+	>
+		CV
+	</div>
+	<div
+		class="col-span-3 row-span-2 col-start-1 row-start-4 bg-slate-800 rounded-xl transition hover:scale-104"
+	>
+		Proyectos
+	</div>
+	<div
+		class="row-span-3 col-start-4 row-start-1 bg-slate-800 rounded-xl transition hover:scale-104"
+	>
+		Habilidades
+	</div>
+	<div
+		class="row-span-2 col-start-4 row-start-4 bg-slate-800 rounded-xl transition hover:scale-104"
+	>
+		Servicios
+	</div>
+	<div
+		class="row-span-4 col-start-5 row-start-1 bg-slate-800 rounded-xl transition hover:scale-104 overflow-y-auto no-scrollbar p-5"
+	>
+		<a href="/proyectos"><Timelime /></a>
+	</div>
+
+	<div
+		class="col-start-5 row-start-5 bg-slate-800 rounded-xl transition hover:scale-104"
+	>
+		Contacto
+	</div>
+</div>
